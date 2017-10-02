@@ -18,13 +18,14 @@ Date:
     header 
     {
         background: linear-gradient(135deg, purple, orangered);
-        
+        height: 75em;
     }
     
     h1
     {
         font-family: 'Audiowide', cursive;
         font-size: 20em;
+        margin-left: .2em;
     }
     
     .formRow 

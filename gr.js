@@ -6,8 +6,11 @@ Date:
 // Class level variables
 var formValidates = true;
 var count0 = 0;
-var count1 = 
-
+var count1 = 20;
+var count2 = 0;
+var count3 = 0;
+var isGrowing = true;
+var isRotating = false;
 
 
 function onLoadMain()
@@ -43,6 +46,7 @@ function validateForm(e)
 function animateHeader()
 {
     var header = document.getElementById("head");
+    var title = document.getElementById("title");
     
 
     if (count0 < 360)
@@ -56,7 +60,52 @@ function animateHeader()
         header.style.background = "linear-gradient(-" + count0 + "deg, purple, orangered)";
     }
 
-    if()
+    //
+    if (count1 < 21 && isGrowing)
+    {
+        count1 += .015;
+        title.style.fontSize = count1 + "em"
+    }
+    
+    if (count1 > 21 && isGrowing)
+    {
+        isGrowing = false
+    }
+
+    if ( count1 > 19 && !isGrowing)
+    {
+        count1 -= .015;
+        title.style.fontSize = count1 + "em"
+    }
+
+
+    if ( count1 < 19 && !isGrowing)
+    {
+        isGrowing = true;
+    }
+
+    if (count2 < 1500)
+    {
+        count2 += 1;
+    }
+    else if (count2 >= 1500)
+    {
+        if (count3 < 360)
+        {
+            count3 += 1;
+            title.style.transform = "rotate(" + -count3 + "deg)";
+            
+        }
+        else if(count3 >= 360)
+        {
+            count3 = 0;
+            count2 = 0;
+        }
+        
+    }
+
+
+    
 
 }
 
