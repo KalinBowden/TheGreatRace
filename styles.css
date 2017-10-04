@@ -132,3 +132,21 @@ Date:
     {
         display: none;
     }
+
+
+    #race1
+    {
+        background-image: url("images/l1.png");
+        height: 100em;
+        display: block;
+        background-repeat: repeat-x;
+    }
+
+
+    #race2
+    {
+        background-image: url("images/tile.png");
+        height: 10em;
+        display: block;
+        background-repeat: repeat-x;
+    }

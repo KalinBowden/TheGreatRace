@@ -9,6 +9,7 @@ var count0 = 0;
 var count1 = 20;
 var count2 = 0;
 var count3 = 0;
+var count4 = 0;
 var isGrowing = true;
 var isRotating = false;
 
@@ -19,14 +20,28 @@ function onLoadMain()
     document.getElementById("btnSignIn").addEventListener("click", gotoSignIn, false);
     document.getElementById("back").addEventListener("click", gotoHeader, false);
     document.getElementById("btnLogIn").addEventListener("click", gotoChar, false);
+    document.getElementById("btnPickChar").addEventListener("click", gotoRace, false);
 }   
 
 
-//
+//goto
 function animateHeader()
 {
     var header = document.getElementById("head");
     var title = document.getElementById("title");
+
+
+    var raceBack = document.getElementById("race1");
+
+    if (count4 < 75000)
+    {
+        raceBack.style.backgroundPositionX = (count4++)/75 + "%";
+    }
+    else if (count4 >= 75000)
+    {
+        count4 = -10;
+    }
+    
     
 
     if (count0 < 360)
@@ -112,6 +127,16 @@ function gotoChar()
 
     charSelect.style.display = "block";
     signIn.style.display = "none";
+}
+
+
+function gotoRace()
+{
+    var race = document.getElementById("race");
+    var charSelect = document.getElementById("charSelect");
+
+    race.style.display = "block";
+    charSelect.style.display = "none";
 }
 
 
