@@ -16,30 +16,10 @@ var isRotating = false;
 function onLoadMain()
 {
     var myInt = setInterval(animateHeader, 5);
-}
-
-// 
-function validateForm(e) 
-{
-    e.preventDefault();
-
-    //
-    if (formValidates)
-    {
-        document.getElementById("errorMsg").innerHTML = "";
-        document.getElementById("errorMsg").style.display = "none";
-        alert("Form Submitted");
-    }
-    else
-    {
-        document.getElementById("errorMsg").innerHTML = "Hmmmm... looks like there was a problem with on of the fields. Better try again.";
-        document.getElementById("errorMsg").style.display = "block";
-        scroll(0,0);
-        alert("Form did not Submit");
-    }
-
-    formValidates = true;
-}
+    document.getElementById("btnSignIn").addEventListener("click", gotoSignIn, false);
+    document.getElementById("back").addEventListener("click", gotoHeader, false);
+    document.getElementById("btnLogIn").addEventListener("click", gotoChar, false);
+}   
 
 
 //
@@ -103,11 +83,37 @@ function animateHeader()
         }
         
     }
-
-
-    
-
 }
+
+
+function gotoHeader()
+{
+    var header = document.getElementById("head");
+    var signIn = document.getElementById("signInForm");
+
+    header.style.display = "block";
+    signIn.style.display = "none";
+}
+
+
+function gotoSignIn()
+{
+    var header = document.getElementById("head");
+    var signIn = document.getElementById("signInForm");
+
+    header.style.display = "none";
+    signIn.style.display = "block";
+}
+
+function gotoChar()
+{
+    var charSelect = document.getElementById("charSelect");
+    var signIn = document.getElementById("signInForm");
+
+    charSelect.style.display = "block";
+    signIn.style.display = "none";
+}
+
 
 
 window.addEventListener("load", onLoadMain, false);

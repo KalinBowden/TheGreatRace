@@ -36,7 +36,7 @@
                     <h1 id="title">The Great Race</h1>
                 </div>
                 <div class="col-md-5">
-                    <button type="button" class="btn btn-default btn-lg"><strong>Sign In</strong></button>
+                    <button type="button" class="btn btn-default btn-lg" id="btnSignIn"><strong>Sign In</strong></button>
                     <button type="button" class="btn btn-default btn-lg"><strong>Pick Racer</strong></button>
                     <button type="button" class="btn btn-default btn-lg"><strong>Get Racing</strong></button>
                 </div>
@@ -47,7 +47,7 @@
         <!-- ============================================================================== -->
 
         <!--  -->
-        <div>
+        <div id="signInForm">
             <div class="row text-left formRowMain">
                 <div class="col-md-3"></div>
 
@@ -66,7 +66,8 @@
                             <label for="exampleInputPassword1">Password</label>
                             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                         </div>
-                        <button type="submit" class="btn btn-default" onclick="validateForm(this.form)">Log In</button>
+                        <button type="button" class="btn btn-default" onclick="validateForm(this.form)" id="btnLogIn">Log In</button>
+                        <button type="button" class="btn btn-default" onclick="validateForm(this.form)" id="back">back</button>
                     </form>
 
                     <h3 class="text-center myForm-Quest formSep">OR</h3>
@@ -144,25 +145,28 @@
 
         <!-- ============================================================================== -->
 
-
-        <div>
-            <div class="row text-center stoplight">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-
-                    <div class="row text-center">
-                        <div class="col-md-4 text-center" id="light0"></div>
-                        <div class="col-md-4 text-center" id="light1"></div>
-                        <div class="col-md-4 text-center" id="light2"></div>
-                    </div>
-
-                </div>
-                <div class="col-md-2"></div>
-            </div>
+        <div class="row" id="charSelect">
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
         </div>
 
+        <!-- ============================================================================== -->
 
 
+        <div class="row text-center stoplight" id="race">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+
+                <div class="row text-center">
+                    <div class="col-md-4 text-center" id="light0"></div>
+                    <div class="col-md-4 text-center" id="light1"></div>
+                    <div class="col-md-4 text-center" id="light2"></div>
+                </div>
+
+            </div>
+            <div class="col-md-2"></div>
+        </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

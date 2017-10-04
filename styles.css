@@ -70,9 +70,10 @@ Date:
     }
 
 
-        .stoplight
+    .stoplight
     {
         background: dimgray;
+        display: none;
     }
 
 
@@ -110,4 +111,24 @@ Date:
         margin: 3em;
         background: radial-gradient(greenyellow,darkgreen,darkgreen);
         
+    }
+
+
+    #charSelect
+    {
+        background-color: dimgray;
+        height: 70em;
+        display: none;
+    }
+
+
+    #signInForm
+    {
+        display: none;
+    }
+
+
+    #race
+    {
+        display: none;
     }
