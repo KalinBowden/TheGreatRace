@@ -12,6 +12,7 @@ var count3 = 0;
 var count4 = 0;
 var isGrowing = true;
 var isRotating = false;
+var isRacing = false;
 
 
 function onLoadMain()
@@ -32,17 +33,21 @@ function animateHeader()
 
 
     var raceBack = document.getElementById("race1");
+    var raceBack1 = document.getElementById("race2");
 
-    if (count4 < 75000)
+
+    if (isRacing)
     {
-        raceBack.style.backgroundPositionX = (count4++)/75 + "%";
+        if (count4 < 75000)
+        {
+            raceBack.style.backgroundPositionX = (count4++)/75 + "%";
+            raceBack1.style.backgroundPositionX = (count4++)/50*-1 + "%";
+        }
+        else if (count4 >= 75000)
+        {
+            count4 = -10;
+        }
     }
-    else if (count4 >= 75000)
-    {
-        count4 = -10;
-    }
-    
-    
 
     if (count0 < 360)
     {
@@ -139,6 +144,9 @@ function gotoRace()
     charSelect.style.display = "none";
 }
 
-
+function toggleRace()
+{
+    isRacing = !isRacing;
+}
 
 window.addEventListener("load", onLoadMain, false);
