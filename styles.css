@@ -162,3 +162,34 @@ Date:
         border-color: dimgray;
         background: radial-gradient(greenyellow,green);
     }
+
+    #test0
+    {
+        position: relative;
+        top: 765px;
+        right: 70%;
+    }
+
+    #test1
+    {
+        position: relative;
+        top: 500px;
+        right: 70%;
+        z-index: 2;
+    }
+
+    #test2
+    {
+        position: relative;
+        top: 300px;
+        right: 70%;
+        z-index: 3;
+    }
+
+    #finish
+    {
+        position: relative;
+        height: 138px;
+        right: -2%;
+        opacity: .0;
+    }

@@ -10,9 +10,13 @@ var count1 = 20;
 var count2 = 0;
 var count3 = 0;
 var count4 = 0;
+var count5 = 0;
 var isGrowing = true;
 var isRotating = false;
 var isRacing = false;
+var raceCompelted0 = 50;
+var raceCompelted1 = 85;
+var raceCompelted2 = 85;
 
 
 function onLoadMain()
@@ -34,6 +38,10 @@ function animateHeader()
 
     var raceBack = document.getElementById("race1");
     var raceBack1 = document.getElementById("race2");
+    var racer0 = document.getElementById("test0");
+    var racer1 = document.getElementById("test1");
+    var racer2 = document.getElementById("test2");
+    var finishLine = document.getElementById("finish");
 
 
     if (isRacing)
@@ -42,10 +50,23 @@ function animateHeader()
         {
             raceBack.style.backgroundPositionX = (count4++)/15 + "%";
             raceBack1.style.backgroundPositionX = (count4++)/50*-1 + "%";
+            
+            raceCompelted0 -= Math.ceil(Math.random()*50)*.002;
+            racer0.style.right = (raceCompelted0) + "%";
+            raceCompelted1 -= Math.ceil(Math.random()*50)*.002;
+            racer1.style.right = (raceCompelted1) + "%";
+            raceCompelted2 -= Math.ceil(Math.random()*50)*.002;
+            racer2.style.right = (raceCompelted2) + "%";
         }
         else if (count4 >= 75000)
         {
             count4 = 0;
+        }
+
+        if (raceCompelted0 < 22)
+        {
+            count5 += .0006;
+            finishLine.style.opacity = count5;
         }
     }
 
