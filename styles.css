@@ -197,3 +197,10 @@ Date:
         left: 250%;
         bottom: 135px;
     }
+
+    #charSel
+    {
+        border: 7px solid black;
+        padding: 2;
+        background-color: dimgray;
+    }
