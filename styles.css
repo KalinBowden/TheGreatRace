@@ -70,13 +70,6 @@ Date:
     }
 
 
-    .stoplight
-    {
-        background: dimgray;
-        display: none;
-    }
-
-
     #light0
     {
         border:  .2em solid black;
@@ -130,16 +123,17 @@ Date:
 
     #race
     {
-        display: none;
+        
     }
 
 
     #race1
     {
         background-image: url("images/l1.png");
-        height: 100em;
+        height: 70em;
         display: block;
         background-repeat: repeat-x;
+        background-size: cover;
     }
 
 
@@ -149,4 +143,22 @@ Date:
         height: 10em;
         display: block;
         background-repeat: repeat-x;
+        
+    }
+
+    .spanGylf
+    {
+        margin: .1em;
+    }
+
+    #go
+    {
+        margin-top: 15em;
+        height: 150px;
+        width: 150px;
+        color: greenyellow;
+        border-radius: 75px;
+        border-width: .3em;
+        border-color: dimgray;
+        background: radial-gradient(greenyellow,green);
     }

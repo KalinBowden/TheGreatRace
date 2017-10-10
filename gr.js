@@ -40,12 +40,12 @@ function animateHeader()
     {
         if (count4 < 75000)
         {
-            raceBack.style.backgroundPositionX = (count4++)/75 + "%";
+            raceBack.style.backgroundPositionX = (count4++)/15 + "%";
             raceBack1.style.backgroundPositionX = (count4++)/50*-1 + "%";
         }
         else if (count4 >= 75000)
         {
-            count4 = -10;
+            count4 = 0;
         }
     }
 
