@@ -134,6 +134,7 @@ Date:
         display: block;
         background-repeat: repeat-x;
         background-size: cover;
+        z-index: 0;
     }
 
 
@@ -143,6 +144,7 @@ Date:
         height: 10em;
         display: block;
         background-repeat: repeat-x;
+        z-index: 3;
         
     }
 
@@ -160,36 +162,38 @@ Date:
         border-radius: 75px;
         border-width: .3em;
         border-color: dimgray;
-        background: radial-gradient(greenyellow,green);
+        background: radial-gradient(lightcoral,red);
     }
 
     #test0
     {
-        position: relative;
-        top: 765px;
-        right: 70%;
+        position: absolute;
+        top: 600px;
+        left: 0px;
+        z-index: 2
     }
 
     #test1
     {
-        position: relative;
-        top: 500px;
-        right: 70%;
+        position: absolute;
+        top: 800px;
+        left: 0px;
         z-index: 2;
     }
 
-    #test2
-    {
-        position: relative;
-        top: 300px;
-        right: 70%;
-        z-index: 3;
-    }
 
     #finish
     {
         position: relative;
         height: 138px;
-        right: -2%;
+        right: 0px;
         opacity: .0;
+    }
+
+    #rand
+    {
+        z-index: 1;
+        position: absolute;
+        left: 250%;
+        bottom: 135px;
     }

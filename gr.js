@@ -14,9 +14,10 @@ var count5 = 0;
 var isGrowing = true;
 var isRotating = false;
 var isRacing = false;
-var raceCompelted0 = 50;
-var raceCompelted1 = 85;
-var raceCompelted2 = 85;
+var raceCompelted0 = 25;
+var raceCompelted1 = 25;
+var racer;
+
 
 
 function onLoadMain()
@@ -26,6 +27,15 @@ function onLoadMain()
     document.getElementById("back").addEventListener("click", gotoHeader, false);
     document.getElementById("btnLogIn").addEventListener("click", gotoChar, false);
     document.getElementById("btnPickChar").addEventListener("click", gotoRace, false);
+
+    var racer0 = document.getElementById("test0");
+    var racer1 = document.getElementById("test1");
+    var rand = document.getElementById("rand");
+    racer0.src = "images/racer" + Math.floor(Math.random()*3) +".gif";
+    racer1.src = "images/racer" + Math.floor(Math.random()*3) +".gif";
+    rand.src = "images/random" + Math.floor(Math.random()*8) +".gif";
+
+    console.log(Math.floor(Math.random()*6));
 }   
 
 
@@ -40,34 +50,36 @@ function animateHeader()
     var raceBack1 = document.getElementById("race2");
     var racer0 = document.getElementById("test0");
     var racer1 = document.getElementById("test1");
-    var racer2 = document.getElementById("test2");
     var finishLine = document.getElementById("finish");
 
 
     if (isRacing)
     {
-        if (count4 < 75000)
+        if (count4 < 75000 && count4 % 6 === 0 )
         {
-            raceBack.style.backgroundPositionX = (count4++)/15 + "%";
-            raceBack1.style.backgroundPositionX = (count4++)/50*-1 + "%";
+            raceBack.style.backgroundPositionX = (count4)/15 + "%";
+            raceBack1.style.backgroundPositionX = (count4)/50*-1 + "%";
             
-            raceCompelted0 -= Math.ceil(Math.random()*50)*.002;
-            racer0.style.right = (raceCompelted0) + "%";
-            raceCompelted1 -= Math.ceil(Math.random()*50)*.002;
-            racer1.style.right = (raceCompelted1) + "%";
-            raceCompelted2 -= Math.ceil(Math.random()*50)*.002;
-            racer2.style.right = (raceCompelted2) + "%";
+            raceCompelted0 += Math.ceil(Math.random()*5);
+            racer0.style.left = (raceCompelted0) + "px";
+            raceCompelted1 += Math.ceil(Math.random()*5);
+            racer1.style.left = (raceCompelted1) + "px";
+
+            console.log('Racer 0: ' + racer0.style.left.toString());
+            console.log('Racer 1: ' + racer1.style.left.toString());
+            
         }
         else if (count4 >= 75000)
         {
             count4 = 0;
         }
 
-        if (raceCompelted0 < 22)
+        if (raceCompelted0 > 1100 || raceCompelted1 > 1100)
         {
-            count5 += .0006;
+            count5 += .001;
             finishLine.style.opacity = count5;
         }
+        count4++;
     }
 
     if (count0 < 360)
@@ -167,7 +179,18 @@ function gotoRace()
 
 function toggleRace()
 {
+    var light = document.getElementById("go");
     isRacing = !isRacing;
+
+    if (isRacing)
+    {
+        light.style.background = 'radial-gradient(greenyellow,green)';
+    }
+    else
+    {
+        light.style.background = 'radial-gradient(lightcoral,red)'
+    }
 }
+
 
 window.addEventListener("load", onLoadMain, false);
