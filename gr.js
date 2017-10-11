@@ -5,6 +5,12 @@ Date:
 
 // Class level variables
 var formValidates = true;
+var pony = ['0', '1', '2', '3', '4', '5', '6'];
+var names = ['Rainbow Dash', 'Flutter Shy', 'Derpy Whooves', 'Dr. Whooves', 'Scootaloo', 'Sweetie Belle', 'Discord'];
+var ponysSelect = ['images/racer0', 'images/racer1', 'images/racer2', 'images/racer3','images/racer4','images/racer5','images/racer6'];
+var ponysRacing = ['images/racer0', 'images/racer1', 'images/racer2', 'images/racer3','images/racer4','images/racer5','images/racer6'];
+var ponysWinning = ['images/racer0', 'images/racer1', 'images/racer2', 'images/racer3','images/racer4','images/racer5','images/racer6'];
+var isPegasus = [true, true, true, false, false, false, false];
 var count0 = 0;
 var count1 = 20;
 var count2 = 0;
@@ -21,6 +27,7 @@ var raceCompelted0 = 25;
 var raceCompelted1 = 25;
 var currentIndex = 0;
 var racers = 2;
+var winner = false;
 
 
 
@@ -39,8 +46,20 @@ function onLoadMain()
     racer1.src = "images/racer" + Math.floor(Math.random()*7) +".gif";
     rand.src = "images/random" + Math.floor(Math.random()*9) +".gif";
 
-    console.log(Math.floor(Math.random()*6));
+
+    for (var index = 0; index < 0; index++)
+    {
+        pony[index] = createPony(names[index], ponysSelect[index], ponysRacing[index], ponysWinning[index], isPegasus[index]);
+        console.log(pony[index][0].toString(),pony[index][1].toString(), pony[index][2].toString(), pony[index][3].toString());
+    }
 }   
+
+
+function createPony(name, select, race, win, peg)
+{
+    var tempPony = [name, select, race, win, peg];
+    return tempPony;
+}
 
 
 //goto
@@ -170,6 +189,15 @@ function animateHeader()
         }
         
     }
+
+
+    //
+    if( (raceCompelted0 > 1635 || raceCompelted1 > 1635) && !winner)
+    {
+        alert("winner");
+        winner = !winner;
+    }
+
 }
 
 
@@ -234,6 +262,7 @@ function toggleRace()
 function navRight()
 {
     var char = document.getElementById("char0");
+    var name = document.getElementById("charName");
 
     if(currentIndex === 6)
     {
@@ -246,11 +275,13 @@ function navRight()
 
 
     char.src = 'images/racer' + currentIndex + '.gif';
+    name.innerHTML = names[currentIndex];
 }
 
 function navLeft()
 {
     var char = document.getElementById("char0");
+    var name = document.getElementById("charName");
 
     if(currentIndex === 0)
     {
@@ -262,6 +293,7 @@ function navLeft()
     }
 
     char.src = 'images/racer' + currentIndex + '.gif';
+    name.innerHTML = names[currentIndex];
 }
 
 window.addEventListener("load", onLoadMain, false);

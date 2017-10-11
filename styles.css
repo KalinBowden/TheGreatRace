@@ -145,17 +145,16 @@ Date:
         display: none;
         background-repeat: repeat-x;
         z-index: 3;
-        
     }
 
     .spanGylf
     {
-        margin: .1em;
+        padding: .1em;
     }
 
     #go
     {
-        margin-top: 15em;
+        margin-top: 2.5em;
         height: 150px;
         width: 150px;
         color: greenyellow;
@@ -168,7 +167,7 @@ Date:
     #test0
     {
         position: absolute;
-        top: 300px;
+        top: 225px;
         left: 0px;
         z-index: 2;
     }
@@ -176,7 +175,7 @@ Date:
     #test1
     {
         position: absolute;
-        top: 500px;
+        top: 425px;
         left: 0px;
         z-index: 2;
     }
@@ -204,7 +203,7 @@ Date:
         border-left-width: 0;
         border-right-width: 0;
         background-color: rgba(105,105,105, 0.7);
-        margin-top: 5.5em;
+        margin-top: 3.5em;
         z-index: 2;
     }
 
@@ -222,4 +221,13 @@ Date:
     {
         font-size: 20em;
         text-align: center;
+    }
+
+
+    #charName
+    {
+        font-family: 'Boogaloo', cursive;
+        font-size: 2.5em;
+        color:blue;
+        text-shadow: skyblue 5px 5px 5px;
     }
