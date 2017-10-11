@@ -27,38 +27,44 @@ var raceCompelted0 = 25;
 var raceCompelted1 = 25;
 var currentIndex = 0;
 var racers = 2;
-var winner = false;
+var raceOver = false;
+var racer0;
+var racer1;
 
 
 
 function onLoadMain()
 {
-    var myInt = setInterval(animateHeader, 5);
+    //
+    var myInt = setInterval(animateHeadser, 5);
     document.getElementById("btnSignIn").addEventListener("click", gotoSignIn, false);
     document.getElementById("back").addEventListener("click", gotoHeader, false);
     document.getElementById("btnLogIn").addEventListener("click", gotoChar, false);
     document.getElementById("btnPickChar").addEventListener("click", gotoRace, false);
 
-    var racer0 = document.getElementById("test0");
-    var racer1 = document.getElementById("test1");
+    //
+    var racerImg0 = document.getElementById("test0");
+    var racerImg1 = document.getElementById("test1");
     var rand = document.getElementById("rand");
-    racer0.src = "images/racer" + Math.floor(Math.random()*7) +".gif";
-    racer1.src = "images/racer" + Math.floor(Math.random()*7) +".gif";
+    racerImg0.src = "";
+    racerImg1.src = "";
     rand.src = "images/random" + Math.floor(Math.random()*9) +".gif";
 
 
-    for (var index = 0; index < 0; index++)
+    //
+    for (var index = 0; index < pony.length; index++)
     {
         pony[index] = createPony(names[index], ponysSelect[index], ponysRacing[index], ponysWinning[index], isPegasus[index]);
         console.log(pony[index][0].toString(),pony[index][1].toString(), pony[index][2].toString(), pony[index][3].toString());
     }
+    
 }   
 
 
-function createPony(name, select, race, win, peg)
+function createPony(name, select, race, win, peg, index)
 {
     var tempPony = [name, select, race, win, peg];
-    return tempPony;
+    pony[index] = tempPony;
 }
 
 
@@ -76,6 +82,8 @@ function animateHeader()
     var racer0 = document.getElementById("test0");
     var racer1 = document.getElementById("test1");
     var finishLine = document.getElementById("finish");
+    var winnerIcon = document.getElementById("winningImg");
+    var winner;
 
 
     if (isRacing)
@@ -192,10 +200,15 @@ function animateHeader()
 
 
     //
-    if( (raceCompelted0 > 1635 || raceCompelted1 > 1635) && !winner)
+    if( (raceCompelted0 > 1635 || raceCompelted1 > 1635) && !raceOver)
     {
-        alert("winner");
-        winner = !winner;
+        raceOver = !raceOver;
+
+    }
+
+    if(winner)
+    {
+        //winnerIcon.src = 
     }
 
 }
@@ -294,6 +307,39 @@ function navLeft()
 
     char.src = 'images/racer' + currentIndex + '.gif';
     name.innerHTML = names[currentIndex];
+}
+
+function grabRacer()
+{
+    var temp = pony[currentIndex];
+    var raceImg0 = document.getElementById("test0");
+    var raceImg1 = document.getElementById("test1");
+
+    alert(temp[0].toString(), temp[1].toString(), temp[0].toString(), temp[2].toString(),temp[3].toString(), temp[4].toString());
+    
+    if(temp[4])
+    {
+        racer0 = temp;
+
+        while(temp[4])
+        {
+            temp = pony[Math.ceil(Math.random()*7)];
+        }
+        racer1 = temp;
+    }
+    else
+    {
+        racer1 = temp;
+
+        while(!temp[4])
+        {
+            temp = pony[Math.ceil(Math.random()*7)];
+        }
+        racer0 = temp;
+    }
+
+    raceImg0.src = racer0[2];
+    raceImg1.src = racer1[2];
 }
 
 window.addEventListener("load", onLoadMain, false);

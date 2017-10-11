@@ -231,3 +231,9 @@ Date:
         color:blue;
         text-shadow: skyblue 5px 5px 5px;
     }
+
+    #endingScreen
+    {
+        height: 75em;
+        background: radial-gradient(black,dimgray);
+    }
