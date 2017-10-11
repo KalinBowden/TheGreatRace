@@ -131,7 +131,7 @@ Date:
     {
         background-image: url("images/l1.png");
         height: 70em;
-        display: block;
+        display: none;
         background-repeat: repeat-x;
         background-size: cover;
         z-index: 0;
@@ -142,7 +142,7 @@ Date:
     {
         background-image: url("images/tile.png");
         height: 10em;
-        display: block;
+        display: none;
         background-repeat: repeat-x;
         z-index: 3;
         
@@ -168,15 +168,15 @@ Date:
     #test0
     {
         position: absolute;
-        top: 600px;
+        top: 300px;
         left: 0px;
-        z-index: 2
+        z-index: 2;
     }
 
     #test1
     {
         position: absolute;
-        top: 800px;
+        top: 500px;
         left: 0px;
         z-index: 2;
     }
@@ -201,6 +201,25 @@ Date:
     #charSel
     {
         border: 7px solid black;
-        padding: 2;
-        background-color: dimgray;
+        border-left-width: 0;
+        border-right-width: 0;
+        background-color: rgba(105,105,105, 0.7);
+        margin-top: 5.5em;
+        z-index: 2;
+    }
+
+    .selectChar
+    {
+        
+    }
+
+    #char0
+    {
+        opacity: 1;
+    }
+
+    #charArrowLeft, #charArrowRight
+    {
+        font-size: 20em;
+        text-align: center;
     }

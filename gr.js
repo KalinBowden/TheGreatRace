@@ -11,6 +11,9 @@ var count2 = 0;
 var count3 = 0;
 var count4 = 0;
 var count5 = 0;
+var count6 = 255;
+var count7 = 128;
+var count8 = 0;
 var isGrowing = true;
 var isRotating = false;
 var isRacing = false;
@@ -44,6 +47,8 @@ function animateHeader()
 {
     var header = document.getElementById("head");
     var title = document.getElementById("title");
+    var leftArrow = document.getElementById("charArrowLeft");
+    var rightArrow = document.getElementById("charArrowRight");
 
 
     var raceBack = document.getElementById("race1");
@@ -92,6 +97,48 @@ function animateHeader()
         count0 = 0;
         header.style.background = "linear-gradient(-" + count0 + "deg, purple, orangered)";
     }
+
+    if((count4) / 5000 === 0)
+    {
+        //
+        if (count6 < 256)
+        {
+            count6++;
+        }
+        else
+        {
+            count6 = 0;
+        }
+
+        //
+        if (count7 < 255)
+        {
+            count7+= 2;
+        }
+        else
+        {
+            count7 = 0;
+        }
+
+        //
+        if (count8 < 250)
+        {
+            count8 += 2;
+        }
+        else
+        {
+            count8 = 0;
+        }
+
+        leftArrow.style.color = 'rgb('+ count6 +','+ count7 +','+ count8 +')';
+        rightArrow.style.color = 'rgb('+ count6 +','+ count7 +','+ count8 +')';
+    }
+
+
+    
+
+    
+
 
     //
     if (count1 < 21 && isGrowing)
@@ -152,10 +199,14 @@ function gotoHeader()
 function gotoSignIn()
 {
     var header = document.getElementById("head");
-    var signIn = document.getElementById("signInForm");
+    var race = document.getElementById("race");
+    var race1 = document.getElementById("race1");
 
     header.style.display = "none";
-    signIn.style.display = "block";
+    race.style.display = "block";
+    race1.style.display = "block";
+    race2.style.display = "block";
+    
 }
 
 function gotoChar()
