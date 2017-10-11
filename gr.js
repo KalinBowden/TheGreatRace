@@ -11,15 +11,16 @@ var count2 = 0;
 var count3 = 0;
 var count4 = 0;
 var count5 = 0;
-var count6 = 255;
-var count7 = 128;
+var count6 = 0;
+var count7 = 0;
 var count8 = 0;
 var isGrowing = true;
 var isRotating = false;
 var isRacing = false;
 var raceCompelted0 = 25;
 var raceCompelted1 = 25;
-var racer;
+var currentIndex = 0;
+var racers = 2;
 
 
 
@@ -34,9 +35,9 @@ function onLoadMain()
     var racer0 = document.getElementById("test0");
     var racer1 = document.getElementById("test1");
     var rand = document.getElementById("rand");
-    racer0.src = "images/racer" + Math.floor(Math.random()*3) +".gif";
-    racer1.src = "images/racer" + Math.floor(Math.random()*3) +".gif";
-    rand.src = "images/random" + Math.floor(Math.random()*8) +".gif";
+    racer0.src = "images/racer" + Math.floor(Math.random()*7) +".gif";
+    racer1.src = "images/racer" + Math.floor(Math.random()*7) +".gif";
+    rand.src = "images/random" + Math.floor(Math.random()*9) +".gif";
 
     console.log(Math.floor(Math.random()*6));
 }   
@@ -98,46 +99,32 @@ function animateHeader()
         header.style.background = "linear-gradient(-" + count0 + "deg, purple, orangered)";
     }
 
-    if((count4) / 5000 === 0)
+    //
+    if (count6 < 256)
     {
-        //
-        if (count6 < 256)
-        {
-            count6++;
-        }
-        else
-        {
-            count6 = 0;
-        }
-
-        //
-        if (count7 < 255)
-        {
-            count7+= 2;
-        }
-        else
-        {
-            count7 = 0;
-        }
-
-        //
-        if (count8 < 250)
-        {
-            count8 += 2;
-        }
-        else
-        {
-            count8 = 0;
-        }
-
-        leftArrow.style.color = 'rgb('+ count6 +','+ count7 +','+ count8 +')';
-        rightArrow.style.color = 'rgb('+ count6 +','+ count7 +','+ count8 +')';
+        count6++;
+    }
+    else
+    {
+        count6 = 0;
     }
 
-
+    //
     
 
-    
+    //
+    if (count8 > 0)
+    {
+        count8++;
+    }
+    else
+    {
+        count8 = 255;
+    }
+
+    leftArrow.style.color = 'rgb('+ count6 +','+ count7 +','+ count8 +')';
+    rightArrow.style.color = 'rgb('+ count6 +','+ count7 +','+ count8 +')';
+
 
 
     //
@@ -243,5 +230,38 @@ function toggleRace()
     }
 }
 
+
+function navRight()
+{
+    var char = document.getElementById("char0");
+
+    if(currentIndex === 6)
+    {
+        currentIndex = 0;
+    }
+    else
+    {
+        currentIndex++
+    }
+
+
+    char.src = 'images/racer' + currentIndex + '.gif';
+}
+
+function navLeft()
+{
+    var char = document.getElementById("char0");
+
+    if(currentIndex === 0)
+    {
+        currentIndex = 6;
+    }
+    else
+    {
+        currentIndex--
+    }
+
+    char.src = 'images/racer' + currentIndex + '.gif';
+}
 
 window.addEventListener("load", onLoadMain, false);
