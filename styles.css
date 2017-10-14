@@ -5,7 +5,7 @@ Date:
     
     body 
     {
-        background-color: green;
+        background-color: black;
         margin: 0;
         color: whitesmoke;
     }
@@ -121,12 +121,6 @@ Date:
     }
 
 
-    #race
-    {
-        
-    }
-
-
     #race1
     {
         background-image: url("images/l1.png");
@@ -135,6 +129,7 @@ Date:
         background-repeat: repeat-x;
         background-size: cover;
         z-index: 0;
+         opacity: 1;
     }
 
 
