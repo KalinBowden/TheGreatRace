@@ -229,6 +229,10 @@ Date:
 
     #endingScreen
     {
-        height: 75em;
+        padding: 2em;
+        height: 235em;
         background: radial-gradient(black,dimgray);
+        display: none;
+        opacity: 0;
+        font-size: .31em;
     }

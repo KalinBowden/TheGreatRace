@@ -4,25 +4,27 @@ Date:
 */
 
 // Class level variables
-var formValidates = true;
-var pony = ['0', '1', '2', '3', '4', '5', '6'];
+// Pony object arrays
 var names = ['Rainbow Dash', 'Flutter Shy', 'Derpy Whooves', 'Pinkie Pie', 'Scootaloo', 'Sweetie Belle', 'Twilight Sparkle'];
 var ponysSelect = ['images/select0.gif', 'images/select1.gif', 'images/select2.gif', 'images/select3.gif', 'images/select4.gif', 'images/select5.gif', 'images/select6.gif'];
 var ponysRacing = ['images/racer0.gif', 'images/racer1.gif', 'images/racer2.gif', 'images/racer3.png', 'images/racer4.gif', 'images/racer5.gif', 'images/racer6.gif'];
-var ponysWinning = ['images/racer0.gif', 'images/racer1.gif', 'images/racer2.gif', 'images/racer3.gif', 'images/racer4.gif', 'images/racer5.gif', 'images/racer6.gif'];
+var ponysWinning = ['images/win0.gif', 'images/win1.gif', 'images/win2.gif', 'images/win3.gif', 'images/win4.gif', 'images/win5.gif', 'images/win6.gif'];
+var randomImages = ['images/random0.gif', 'images/random1.gif', 'images/random2.gif', 'images/random3.gif', 'images/random4.gif', 'images/random5.gif', 'images/random6.gif', 'images/random7.gif', 'images/random8.gif', 'images/random0.gif9', ]
 var isPegasus = [true, true, true, false, false, false, true];
-var count0 = 0;
-var count1 = 20;
-var count2 = 0;
-var count3 = 0;
-var count4 = 0;
-var count5 = 0;
+
+// Counters
+var counts = [0, 20, 0, 0, 0, 0, 0, 0, 0, 0,];
 var count6 = 0;
 var count7 = 0;
 var count8 = 0;
+
+// Booleans
+var endSquence = false;
 var isGrowing = true;
 var isRotating = false;
 var isRacing = false;
+
+// Raceing variables
 var raceCompelted0 = 25;
 var raceCompelted1 = 25;
 var currentIndex = 0;
@@ -30,167 +32,121 @@ var racers = 2;
 var raceOver = false;
 var racer0;
 var racer1;
-var temp = 100;
+var winner;
+var opponetPony;
 
 
+var temp = 1;
+var temp1 = 0;
 
+
+// Run this when the pages loads
 function onLoadMain() 
 {
     // Set Interval
     var myInt = setInterval(animateHeader, 5);
+    var rand = document.getElementById("rand");
 
     // Add listners to page
     document.getElementById("btnSignIn").addEventListener("click", gotoSignIn, false);
-    document.getElementById("back").addEventListener("click", gotoHeader, false);
     document.getElementById("btnLogIn").addEventListener("click", gotoChar, false);
     document.getElementById("btnPickChar").addEventListener("click", gotoRace, false);
 
-    // TODO
-    var rand = document.getElementById("rand");
-    rand.src = "images/random" + Math.floor(Math.random() * 9) + ".gif";
+    // Set a random background race
+    rand.src = randomImages[Math.floor(Math.random() * 9)];
 }
 
 
-function createPony(name, select, race, win, peg, index) {
-    var tempPony = [name, select, race, win, peg];
-    pony[index] = tempPony;
-}
-
-
-//goto
-function animateHeader() {
+// Run this function every 5 miliseconds
+function animateHeader() 
+{
+    // Grab the all elemets that will be used by this function
     var header = document.getElementById("head");
     var title = document.getElementById("title");
     var leftArrow = document.getElementById("charArrowLeft");
     var rightArrow = document.getElementById("charArrowRight");
-
-
-    var raceBack = document.getElementById("race1");
-    var raceBack1 = document.getElementById("race2");
+    var raceBackground0 = document.getElementById("race1");
+    var raceBackground1 = document.getElementById("race2");
     var racer0 = document.getElementById("test0");
     var racer1 = document.getElementById("test1");
     var finishLine = document.getElementById("finish");
     var winnerIcon = document.getElementById("winningImg");
+    var winningName = document.getElementById('winningName');
     var winner;
 
 
-    onGameEnd();
+    //onGameEnd();
+    animateHeader0(header);
+    racePonies(raceBackground0, raceBackground1, racer0, racer1, finishLine);
     
 
-
-    if (isRacing) 
+    // Change the color of the arrows
+    if (count6 < 256) 
     {
-        if (count4 < 75000 && count4 % 6 === 0) 
-        {
-            raceBack.style.backgroundPositionX = (count4) / 15 + "%";
-            raceBack1.style.backgroundPositionX = (count4) / 50 * -1 + "%";
-
-            raceCompelted0 += Math.ceil(Math.random() * 5);
-            racer0.style.left = (raceCompelted0) + "px";
-            raceCompelted1 += Math.ceil(Math.random() * 5);
-            racer1.style.left = (raceCompelted1) + "px";
-        } 
-        else if (count4 >= 75000) 
-        {
-            count4 = 0;
-        }
-
-        if (raceCompelted0 > 1100 || raceCompelted1 > 1100) 
-        {
-            count5 += .001;
-            finishLine.style.opacity = count5;
-        }
-        count4++;
-    }
-
-    if (count0 < 360) {
-        header.style.background = "linear-gradient(-" + count0 + "deg, purple, orangered)";
-        count0 += 2;
-    } else if (count0 >= 360) {
-        count0 = 0;
-        header.style.background = "linear-gradient(-" + count0 + "deg, purple, orangered)";
-    }
-
-    //
-    if (count6 < 256) {
         count6++;
-    } else {
+    } 
+    else 
+    {
         count6 = 0;
     }
 
-    //
-
-
-    //
+    // Change the color of the arrows
     if (count8 > 0) {
         count8++;
     } else {
         count8 = 255;
     }
 
+    // Change the color of the arrows
     leftArrow.style.color = 'rgb(' + count6 + ',' + count7 + ',' + count8 + ')';
     rightArrow.style.color = 'rgb(' + count6 + ',' + count7 + ',' + count8 + ')';
 
 
-
     //
-    if (count1 < 21 && isGrowing) {
-        count1 += .015;
-        title.style.fontSize = count1 + "em"
-    }
-
-    if (count1 > 21 && isGrowing) {
-        isGrowing = false
-    }
-
-    if (count1 > 19 && !isGrowing) {
-        count1 -= .015;
-        title.style.fontSize = count1 + "em"
-    }
-
-
-    if (count1 < 19 && !isGrowing) {
-        isGrowing = true;
-    }
-
-    if (count2 < 1500) {
-        count2 += 1;
-    } else if (count2 >= 1500) {
-        if (count3 < 360) {
-            count3 += 1;
-            title.style.transform = "rotate(" + -count3 + "deg)";
-
-        } else if (count3 >= 360) {
-            count3 = 0;
-            count2 = 0;
-        }
-
-    }
-
-
-    //
-    if ((raceCompelted0 > 1635 || raceCompelted1 > 1635) && !raceOver) {
+    if ((raceCompelted0 > 1435 || raceCompelted1 > 1435) && !raceOver) 
+    {
         raceOver = !raceOver;
 
+        if (raceCompelted0 >= raceCompelted1 && isPegasus[currentIndex])
+        {
+            winnerIcon.src = ponysWinning[currentIndex];
+            winningName.innerHTML = names[currentIndex];
+        }
+        else if (raceCompelted0 >= raceCompelted1 && !isPegasus[currentIndex])
+        {
+            winnerIcon.src = ponysWinning[opponetPony];
+            winningName.innerHTML = names[opponetPony];
+        }
+        else if (raceCompelted1 >= raceCompelted0 && !isPegasus[currentIndex])
+        {
+            winnerIcon.src = ponysWinning[currentIndex];
+            winningName.innerHTML = names[currentIndex];
+        }
+        else if (raceCompelted1 >= raceCompelted0 && isPegasus[currentIndex])
+        {
+            winnerIcon.src = ponysWinning[opponetPony];
+            winningName.innerHTML = names[opponetPony];
+        }
     }
 
-    if (winner) {
-        
+    if (raceOver && !endSquence) 
+    {
+        toggleRace();
+        setEndScreen();
+        endSquence = !endSquence;
     }
 
+    if (raceOver)
+    {
+        onGameEnd();
+    }
 }
 
 
-function gotoHeader() {
-    var header = document.getElementById("head");
-    var signIn = document.getElementById("signInForm");
 
-    header.style.display = "block";
-    signIn.style.display = "none";
-}
-
-
-function gotoSignIn() {
+// Go to the race TODO
+function gotoSignIn() 
+{
     var header = document.getElementById("head");
     var race = document.getElementById("race");
     var race1 = document.getElementById("race1");
@@ -199,10 +155,13 @@ function gotoSignIn() {
     race.style.display = "block";
     race1.style.display = "block";
     race2.style.display = "block";
-
 }
 
-function gotoChar() {
+
+
+// TODO
+function gotoChar() 
+{
     var charSelect = document.getElementById("charSelect");
     var signIn = document.getElementById("signInForm");
 
@@ -211,7 +170,10 @@ function gotoChar() {
 }
 
 
-function gotoRace() {
+
+// TODO
+function gotoRace() 
+{
     var race = document.getElementById("race");
     var charSelect = document.getElementById("charSelect");
 
@@ -219,16 +181,23 @@ function gotoRace() {
     charSelect.style.display = "none";
 }
 
-function toggleRace() {
+// Toggle togle the race and light on and off
+function toggleRace() 
+{
     var light = document.getElementById("go");
     isRacing = !isRacing;
 
-    if (isRacing) {
+    if (isRacing) 
+    {
         light.style.background = 'radial-gradient(greenyellow,green)';
-    } else {
+    } 
+    else 
+    {
         light.style.background = 'radial-gradient(lightcoral,red)'
     }
 }
+
+
 
 // In the select screen navigate right
 function navRight() 
@@ -250,6 +219,7 @@ function navRight()
 }
 
 
+
 // In the select screen navigate left
 function navLeft() 
 {
@@ -269,12 +239,15 @@ function navLeft()
     name.innerHTML = names[currentIndex];
 }
 
+
+
+// Allow the player to select a pony to race
 function grabRacer() 
 {
     // Function level variables
     var raceImg0 = document.getElementById("test0");
     var raceImg1 = document.getElementById("test1");
-    var opponetPony = currentIndex;
+    opponetPony = currentIndex;
 
     // If user selects a pegesus pick an non pegesus
     if (isPegasus[currentIndex]) 
@@ -302,20 +275,135 @@ function grabRacer()
 }
 
 
-function onWin()
-{
-
-}
-
+// When a pony wins run this code
 function onGameEnd()
 {
     // Function level variables
     var gameScreen0 = document.getElementById('race1');
     var gameScreen1 = document.getElementById('race2');
-    temp -= 1;
+    var endScreen = document.getElementById('endingScreen');
+    var race1 = document.getElementById('race1');
+    var race2 = document.getElementById('race2');
+    temp -= .00075;
 
-    gameScreen0.style.opacity = temp + '%'; 
-    gameScreen1.style.opacity = temp + '%';
+    if (temp > 0)
+    {
+        gameScreen0.style.opacity = temp ;
+        gameScreen1.style.opacity = temp ;
+    }
+
+
+    if (temp <= 0 && temp1 <= 1)
+    {
+        temp1 += .00075;
+        race1.style.display = 'none';
+        race2.style.display = 'none';
+        endScreen.style.display = 'block';
+        endScreen.style.opacity = temp1;
+    }
+}
+
+
+
+// Contains and controls the header logic
+function animateHeader0(header)
+{
+    // Spin the bacgorund
+    if (counts[0] < 360) 
+    {
+        header.style.background = "linear-gradient(-" + counts[0] + "deg, purple, orangered)";
+        counts[0] += 2;
+    } 
+    else if (counts[0] >= 360) 
+    {
+        counts[0] = 0;
+        header.style.background = "linear-gradient(-" + counts[0] + "deg, purple, orangered)";
+    }
+
+
+    // Grow the title text
+    if (counts[1] < 21 && isGrowing) 
+    {
+        counts[1] += .015;
+        title.style.fontSize = counts[1] + "em";
+    }
+
+    // Make the title text shirnk;
+    if (counts[1] > 21 && isGrowing) 
+    {
+        isGrowing = false
+    }
+
+    // Shrink the title text
+    if (counts[1] > 19 && !isGrowing) 
+    {
+        counts[1] -= .015;
+        title.style.fontSize = counts[1] + "em"
+    }
+
+    //  Make the title text grow
+    if (counts[1] < 19 && !isGrowing)
+    {
+        isGrowing = true;
+    }
+
+
+    // Make the title test spin
+    if (counts[2] < 1500) 
+    {
+        counts[2] += 1;
+    } 
+    else if (counts[2] >= 1500) 
+    {
+        if (counts[3] < 360) 
+        {
+            counts[3] += 1;
+            title.style.transform = "rotate(" + -counts[3] + "deg)";
+
+        } 
+        else if (counts[3] >= 360) 
+        {
+            counts[3] = 0;
+            counts[2] = 0;
+        }
+
+    }
+}
+
+function racePonies(raceBackground0, raceBackground1, racer0, racer1, finishLine)
+{
+        // If the ponies are racing make them run randomly
+        if (isRacing) 
+        {
+            // Every 6th iteration randomly incrase the run distance 
+            if (counts[4] % 6 === 0) 
+            {
+                // Move the backgrounds
+                raceBackground0.style.backgroundPositionX = (counts[4]) / 15 + "%";
+                raceBackground1.style.backgroundPositionX = (counts[4]) / 50 * -1 + "%";
+    
+                // Incremnt the raced distance
+                raceCompelted0 += Math.ceil(Math.random() * 5);
+                racer0.style.left = (raceCompelted0) + "px";
+                raceCompelted1 += Math.ceil(Math.random() * 5);
+                racer1.style.left = (raceCompelted1) + "px";
+            } 
+    
+            // As the ponies get closer to the finish line start
+            // to show the finsh line
+            if (raceCompelted0 > 1100 || raceCompelted1 > 1100) 
+            {
+                counts[5] += .001;
+                finishLine.style.opacity = counts[5];
+            }
+    
+            counts[4]++;
+        }
+}
+
+function setEndScreen()
+{
+    
 }
 
 window.addEventListener("load", onLoadMain, false);
