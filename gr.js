@@ -13,7 +13,7 @@ var randomImages = ['images/random0.gif', 'images/random1.gif', 'images/random2.
 var isPegasus = [true, true, true, false, false, false, true];
 
 // Counters
-var counts = [0, 20, 0, 0, 0, 0, 0, 0, 0, 0,];
+var counts = [0, 20, 0, 0, 0, 0, 0, 0, 0, 0];
 var count6 = 0;
 var count7 = 0;
 var count8 = 0;
@@ -34,10 +34,19 @@ var racer0;
 var racer1;
 var winner;
 var opponetPony;
+var finishLine;
 
+// Other game elements
+var background0;
+var background1;
+var gameOverScreen;
+var winningImg;
+var winningName;
 
+// TODO
 var temp = 1;
 var temp1 = 0;
+
 
 
 // Run this when the pages loads
@@ -46,6 +55,14 @@ function onLoadMain()
     // Set Interval
     var myInt = setInterval(animateHeader, 5);
     var rand = document.getElementById("rand");
+    racer0 = document.getElementById("test0");
+    racer1 = document.getElementById("test1");
+    background0 = document.getElementById("race1");
+    background1 = document.getElementById("race2");
+    winningImg = document.getElementById("winningImg");
+    gameOverScreen = document.getElementById('endingScreen');
+    winningName = document.getElementById('winningName');
+    finishLine = document.getElementById("finish");
 
     // Add listners to page
     document.getElementById("btnSignIn").addEventListener("click", gotoSignIn, false);
@@ -65,66 +82,59 @@ function animateHeader()
     var title = document.getElementById("title");
     var leftArrow = document.getElementById("charArrowLeft");
     var rightArrow = document.getElementById("charArrowRight");
-    var raceBackground0 = document.getElementById("race1");
-    var raceBackground1 = document.getElementById("race2");
-    var racer0 = document.getElementById("test0");
-    var racer1 = document.getElementById("test1");
-    var finishLine = document.getElementById("finish");
-    var winnerIcon = document.getElementById("winningImg");
-    var winningName = document.getElementById('winningName');
-    var winner;
+    
 
 
     //onGameEnd();
     animateHeader0(header);
-    racePonies(raceBackground0, raceBackground1, racer0, racer1, finishLine);
+    racePonies();
     
 
     // Change the color of the arrows
-    if (count6 < 256) 
+    if (counts[6] < 256) 
     {
-        count6++;
+        counts[6]++;
     } 
     else 
     {
-        count6 = 0;
+        counts[6] = 0;
     }
 
     // Change the color of the arrows
-    if (count8 > 0) {
-        count8++;
+    if (counts[8] > 0) {
+        counts[8]++;
     } else {
-        count8 = 255;
+        counts[8] = 255;
     }
 
     // Change the color of the arrows
-    leftArrow.style.color = 'rgb(' + count6 + ',' + count7 + ',' + count8 + ')';
-    rightArrow.style.color = 'rgb(' + count6 + ',' + count7 + ',' + count8 + ')';
+    leftArrow.style.color = 'rgb(' + counts[6] + ',' + counts[7] + ',' + counts[8] + ')';
+    rightArrow.style.color = 'rgb(' + counts[6] + ',' + counts[7] + ',' + counts[8] + ')';
 
 
-    //
+    // determin winner
     if ((raceCompelted0 > 1435 || raceCompelted1 > 1435) && !raceOver) 
     {
         raceOver = !raceOver;
 
         if (raceCompelted0 >= raceCompelted1 && isPegasus[currentIndex])
         {
-            winnerIcon.src = ponysWinning[currentIndex];
+            winningImg.src = ponysWinning[currentIndex];
             winningName.innerHTML = names[currentIndex];
         }
         else if (raceCompelted0 >= raceCompelted1 && !isPegasus[currentIndex])
         {
-            winnerIcon.src = ponysWinning[opponetPony];
+            winningImg.src = ponysWinning[opponetPony];
             winningName.innerHTML = names[opponetPony];
         }
         else if (raceCompelted1 >= raceCompelted0 && !isPegasus[currentIndex])
         {
-            winnerIcon.src = ponysWinning[currentIndex];
+            winningImg.src = ponysWinning[currentIndex];
             winningName.innerHTML = names[currentIndex];
         }
         else if (raceCompelted1 >= raceCompelted0 && isPegasus[currentIndex])
         {
-            winnerIcon.src = ponysWinning[opponetPony];
+            winningImg.src = ponysWinning[opponetPony];
             winningName.innerHTML = names[opponetPony];
         }
     }
@@ -132,7 +142,6 @@ function animateHeader()
     if (raceOver && !endSquence) 
     {
         toggleRace();
-        setEndScreen();
         endSquence = !endSquence;
     }
 
@@ -149,12 +158,11 @@ function gotoSignIn()
 {
     var header = document.getElementById("head");
     var race = document.getElementById("race");
-    var race1 = document.getElementById("race1");
 
     header.style.display = "none";
     race.style.display = "block";
-    race1.style.display = "block";
-    race2.style.display = "block";
+    background0.style.display = "block";
+    background1.style.display = "block";
 }
 
 
@@ -193,7 +201,7 @@ function toggleRace()
     } 
     else 
     {
-        light.style.background = 'radial-gradient(lightcoral,red)'
+        light.style.background = 'radial-gradient(lightcoral,red)';
     }
 }
 
@@ -245,8 +253,6 @@ function navLeft()
 function grabRacer() 
 {
     // Function level variables
-    var raceImg0 = document.getElementById("test0");
-    var raceImg1 = document.getElementById("test1");
     opponetPony = currentIndex;
 
     // If user selects a pegesus pick an non pegesus
@@ -258,8 +264,8 @@ function grabRacer()
         }
 
         // Set pegasus to sky
-        raceImg0.src = ponysRacing[currentIndex];
-        raceImg1.src = ponysRacing[opponetPony];
+        racer0.src = ponysRacing[currentIndex];
+        racer1.src = ponysRacing[opponetPony];
     } 
     else 
     {
@@ -269,8 +275,8 @@ function grabRacer()
         }
 
         // Set pegasus to sky
-        raceImg0.src = ponysRacing[opponetPony];
-        raceImg1.src = ponysRacing[currentIndex];
+        racer0.src = ponysRacing[opponetPony];
+        racer1.src = ponysRacing[currentIndex];
     }
 }
 
@@ -278,28 +284,26 @@ function grabRacer()
 // When a pony wins run this code
 function onGameEnd()
 {
-    // Function level variables
-    var gameScreen0 = document.getElementById('race1');
-    var gameScreen1 = document.getElementById('race2');
-    var endScreen = document.getElementById('endingScreen');
-    var race1 = document.getElementById('race1');
-    var race2 = document.getElementById('race2');
+    // increment
     temp -= .00075;
 
+
+    // if temp is greater than 0 blacken the race screen
     if (temp > 0)
     {
-        gameScreen0.style.opacity = temp ;
-        gameScreen1.style.opacity = temp ;
+        background0.style.opacity = temp ;
+        background1.style.opacity = temp ;
     }
 
 
+    // when temp reaches 0 lighten the end screen
     if (temp <= 0 && temp1 <= 1)
     {
         temp1 += .00075;
-        race1.style.display = 'none';
-        race2.style.display = 'none';
-        endScreen.style.display = 'block';
-        endScreen.style.opacity = temp1;
+        background0.style.display = 'none';
+        background1.style.display = 'none';
+        gameOverScreen.style.display = 'block';
+        gameOverScreen.style.opacity = temp1;
     }
 }
 
@@ -331,7 +335,7 @@ function animateHeader0(header)
     // Make the title text shirnk;
     if (counts[1] > 21 && isGrowing) 
     {
-        isGrowing = false
+        isGrowing = false;
     }
 
     // Shrink the title text
@@ -370,40 +374,67 @@ function animateHeader0(header)
     }
 }
 
-function racePonies(raceBackground0, raceBackground1, racer0, racer1, finishLine)
+function racePonies()
 {
-        // If the ponies are racing make them run randomly
-        if (isRacing) 
+    // If the ponies are racing make them run randomly
+    if (isRacing) 
+    {
+        // Every 6th iteration randomly incrase the run distance 
+        if (counts[4] % 6 === 0) 
         {
-            // Every 6th iteration randomly incrase the run distance 
-            if (counts[4] % 6 === 0) 
-            {
-                // Move the backgrounds
-                raceBackground0.style.backgroundPositionX = (counts[4]) / 15 + "%";
-                raceBackground1.style.backgroundPositionX = (counts[4]) / 50 * -1 + "%";
-    
-                // Incremnt the raced distance
-                raceCompelted0 += Math.ceil(Math.random() * 5);
-                racer0.style.left = (raceCompelted0) + "px";
-                raceCompelted1 += Math.ceil(Math.random() * 5);
-                racer1.style.left = (raceCompelted1) + "px";
-            } 
-    
-            // As the ponies get closer to the finish line start
-            // to show the finsh line
-            if (raceCompelted0 > 1100 || raceCompelted1 > 1100) 
-            {
-                counts[5] += .001;
-                finishLine.style.opacity = counts[5];
-            }
-    
-            counts[4]++;
+            // Move the backgrounds
+            background0.style.backgroundPositionX = (counts[4]) / 15 + "%";
+            background1.style.backgroundPositionX = (counts[4]) / 50 * -1 + "%";
+
+            // Incremnt the raced distance
+            raceCompelted0 += Math.ceil(Math.random() * 5);
+            racer0.style.left = (raceCompelted0) + "px";
+            raceCompelted1 += Math.ceil(Math.random() * 5);
+            racer1.style.left = (raceCompelted1) + "px";
+        } 
+
+        // As the ponies get closer to the finish line start
+        // to show the finsh line
+        if (raceCompelted0 > 1100 || raceCompelted1 > 1100) 
+        {
+            counts[5] += .001;
+            finishLine.style.opacity = counts[5];
         }
+
+        counts[4]++;
+    }
 }
 
-function setEndScreen()
+
+
+// When the user clicks the img reset the game
+function onGameReset()
 {
-    
+    // Goto game
+    background0.style.display = 'block';
+    background1.style.display = 'block';
+    gameOverScreen.style.display = 'none';
+
+    // Reset opacity
+    background0.style.opacity = 1;
+    background1.style.opacity = 1;
+    gameOverScreen.style.opacity = 0;
+    finishLine.style.opacity = 0;
+    counts[5] = 0;
+
+    // Reset Racers
+    racer0.style.left = 0;
+    racer1.style.left = 0;
+    raceCompelted0 = 0;
+    raceCompelted1 = 0;
+    raceOver = !raceOver;
+    endSquence = !endSquence;
+    temp = 1;
+    temp1 = 0;
+
+    //
+    winningImg.src = '';
 }
 
+// On load event listner
 window.addEventListener("load", onLoadMain, false);

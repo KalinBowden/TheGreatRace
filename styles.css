@@ -36,8 +36,6 @@ Date:
         border-radius: 25px;
     }
     
-    .myForm {}
-    
     .myForm-Quest {
         margin-bottom: 2.5em;
     }
@@ -80,18 +78,6 @@ Date:
         margin: 3em;
         margin-left: 10%;
         background: radial-gradient(red, darkred);
-    }
-
-    #light1
-    {
-        border:  .2em solid black;
-        border-radius: 150px;
-        background-color: greenyellow;
-        height: 300px;
-        width:300px;
-        margin: 3em;
-        background: radial-gradient(gold,darkgoldenrod);
-        /*background: radial-gradient(yellow, yellow, gold);*/
     }
 
     #light2
