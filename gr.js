@@ -9,7 +9,7 @@ var names = ['Rainbow Dash', 'Flutter Shy', 'Derpy Whooves', 'Pinkie Pie', 'Scoo
 var ponysSelect = ['images/select0.gif', 'images/select1.gif', 'images/select2.gif', 'images/select3.gif', 'images/select4.gif', 'images/select5.gif', 'images/select6.gif'];
 var ponysRacing = ['images/racer0.gif', 'images/racer1.gif', 'images/racer2.gif', 'images/racer3.png', 'images/racer4.gif', 'images/racer5.gif', 'images/racer6.gif'];
 var ponysWinning = ['images/win0.gif', 'images/win1.gif', 'images/win2.gif', 'images/win3.gif', 'images/win4.gif', 'images/win5.gif', 'images/win6.gif'];
-var randomImages = ['images/random0.gif', 'images/random1.gif', 'images/random2.gif', 'images/random3.gif', 'images/random4.gif', 'images/random5.gif', 'images/random6.gif', 'images/random7.gif', 'images/random8.gif', 'images/random0.gif9', ]
+var randomImages = ['images/random0.gif', 'images/random1.gif', 'images/random2.gif', 'images/random3.gif', 'images/random4.gif', 'images/random5.gif'];
 var isPegasus = [true, true, true, false, false, false, true];
 
 // Counters
@@ -35,6 +35,7 @@ var racer1;
 var winner;
 var opponetPony;
 var finishLine;
+var go;
 
 // Other game elements
 var background0;
@@ -55,22 +56,23 @@ function onLoadMain()
     // Set Interval
     var myInt = setInterval(animateHeader, 5);
     var rand = document.getElementById("rand");
-    racer0 = document.getElementById("test0");
-    racer1 = document.getElementById("test1");
+    racer0 = document.getElementById("racer0");
+    racer1 = document.getElementById("racer1");
     background0 = document.getElementById("race1");
     background1 = document.getElementById("race2");
     winningImg = document.getElementById("winningImg");
     gameOverScreen = document.getElementById('endingScreen');
     winningName = document.getElementById('winningName');
     finishLine = document.getElementById("finish");
+    go = document.getElementById('go');
 
+    go.src = 'images/photoFinish1.png';
     // Add listners to page
     document.getElementById("btnSignIn").addEventListener("click", gotoSignIn, false);
-    document.getElementById("btnLogIn").addEventListener("click", gotoChar, false);
     document.getElementById("btnPickChar").addEventListener("click", gotoRace, false);
 
     // Set a random background race
-    rand.src = randomImages[Math.floor(Math.random() * 9)];
+    rand.src = randomImages[Math.floor(Math.random() * 6)];
 }
 
 
@@ -192,16 +194,17 @@ function gotoRace()
 // Toggle togle the race and light on and off
 function toggleRace() 
 {
-    var light = document.getElementById("go");
     isRacing = !isRacing;
 
     if (isRacing) 
     {
-        light.style.background = 'radial-gradient(greenyellow,green)';
+        go.style.background = 'radial-gradient(greenyellow,green)';
+        go.src = 'images/photoFinish.png';
     } 
     else 
     {
-        light.style.background = 'radial-gradient(lightcoral,red)';
+        go.style.background = 'radial-gradient(lightcoral,red)';
+        go.src = 'images/photoFinish1.png';
     }
 }
 
@@ -218,11 +221,11 @@ function navRight()
     if (currentIndex === 6) {
         currentIndex = 0;
     } else {
-        currentIndex++
+        currentIndex++;
     }
 
     // Display the new pony and title
-    char.src = ponysSelect[currentIndex];;
+    char.src = ponysSelect[currentIndex];
     name.innerHTML = names[currentIndex];
 }
 

@@ -141,11 +141,11 @@ Date:
         color: greenyellow;
         border-radius: 75px;
         border-width: .3em;
-        border-color: dimgray;
+        border-color: black;
         background: radial-gradient(lightcoral,red);
     }
 
-    #test0
+    #racer0
     {
         position: absolute;
         top: 225px;
@@ -153,7 +153,7 @@ Date:
         z-index: 2;
     }
 
-    #test1
+    #racer1
     {
         position: absolute;
         top: 425px;

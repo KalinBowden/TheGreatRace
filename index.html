@@ -38,111 +38,10 @@
                 </div>
                 <div class="col-lg-5">
                     <button type="button" class="btn btn-default btn-lg" id="btnSignIn"><strong><span class="glyphicon glyphicon-play spanGylf" aria-hidden="true"></span> Play</strong></button>
-                    <button type="button" class="btn btn-default btn-lg"><strong><span class="glyphicon glyphicon-road spanGylf" aria-hidden="true"></span> Racers</strong></button>
-                    <button type="button" class="btn btn-default btn-lg"><strong><span class="glyphicon glyphicon-cog spanGylf" aria-hidden="true"></span> Options</strong></button>
                 </div>
 
             </div>
         </header>
-
-        <!-- ============================================================================== -->
-
-        <!--  -->
-        <div id="signInForm">
-            <div class="row text-left formRowMain">
-                <div class="col-md-3"></div>
-
-                <div class="col-md-6 formRow">
-
-                    <h2 class="text-center myForm-Quest">Sign In</h2>
-
-                    <div id="errorMsg"></div>
-
-                    <form>
-                        <div class="form-group myForm-Quest">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                        </div>
-                        <div class="form-group myForm-Quest">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                        </div>
-                        <button type="button" class="btn btn-default" onclick="validateForm(this.form)" id="btnLogIn">Log In</button>
-                        <button type="button" class="btn btn-default" onclick="validateForm(this.form)" id="back">back</button>
-                    </form>
-
-                    <h3 class="text-center myForm-Quest formSep">OR</h3>
-
-
-                    <h2 class="text-center myForm-Quest">Create a Game Account</h2>
-
-                    <!--  -->
-                    <form class="for myForm">
-                        <h4>Please Enter you Name and Email Address</h4>
-                        <div class="form-group myForm-Quest">
-                            <label for="exampleInputName2">Name</label>
-                            <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
-                        </div>
-
-                        <h4>Gender</h4>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                                Male
-                            </label>
-                        </div>
-                        <div class="radio myForm-Quest">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                                Female
-                            </label>
-                        </div>
-
-                        <div class="form-group myForm-Quest">
-                            <label for="exampleInputEmail2">Email</label>
-                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
-                        </div>
-
-                        <div class="form-group myForm-Quest">
-                            <label for="exampleInputEmail2">Verify Email</label>
-                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
-                        </div>
-
-                        <div class="form-group myForm-Quest">
-                            <label for="exampleInputEmail2">Select a UserName</label>
-                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
-                        </div>
-
-                        <h4>Create a Password</h4>
-                        <div class="form-group myForm-Quest">
-                            <label class="sr-only" for="exampleInputPassword3">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
-                        </div>
-
-                        <h4>Confirm Password</h4>
-                        <div class="form-group myForm-Quest">
-                            <label class="sr-only" for="exampleInputPassword3">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
-                        </div>
-
-                        <div class="checkbox myForm-Quest">
-                            <label>
-                                <input type="checkbox" value="">
-                                Yes, I want to recieve email from the Great Race.
-                            </label>
-                        </div>
-
-                        <div class="form-group myForm-Quest">
-                            <div class="">
-                                <button type="submit" class="btn btn-default">Create Account</button>
-                            </div>
-                        </div>
-
-                    </form>
-                </div>
-                <div class="col-md-3"></div>
-            </div>
-        </div>
 
         <!-- ============================================================================== -->
 
@@ -164,7 +63,7 @@
                     </div>
                     <div class="col-md-6" class="selectChar">
                         <h3 id="charName">Rainbow Dash</h3>
-                        <img src="images/racer0.gif" alt="thing" height="200" width="200" id="char0" onclick="grabRacer()">   
+                        <img src="images/select0.gif" alt="thing" height="200" width="200" id="char0" onclick="grabRacer()">   
                     </div>
                     <div class="col-md-3" class="selectChar">
                         <span class="glyphicon glyphicon-menu-right" aria-hidden="true" id="charArrowRight" onclick="navRight()"></span>
@@ -174,12 +73,12 @@
                 <div class="col-md-2" class="selectChar"></div>
                 
                 <div class="col-md-5">
-                    <img src="" alt="thing" id="test0" height="200" width="200">
-                    <img src="" alt="thing" id="test1" height="200" width="200">
+                    <img src="" alt="" id="racer0" height="200" width="200">
+                    <img src="" alt="" id="racer1" height="200" width="200">
                 </div>
                 <div class="col-md-2">
 
-                    <input class="btn btn-default" type="button" value="" id="go" onclick="toggleRace()">
+                    <img src="images/photoFinish1.png" alt="" id="go" onclick="toggleRace()">
 
                 </div>
                 <div class="col-md-5"></div>
@@ -194,13 +93,13 @@
             </div>
             <div class="col-md-2"><img src="" alt="random" id="rand" height="300" width="300"></div>   
         </div>
-
+<!-- ============================================================================== -->
         <div>
             <div class="row" id="endingScreen">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
                     <h1 id="winningName"></h1>
-                    <img src="" alt="" id="winningImg" height="500" width="500" onclick="onGameReset()">
+                    <img src="" alt="winner" id="winningImg" height="500" width="500" onclick="onGameReset()">
                 </div>
                 <div class="col-md-4"></div>
             </div>
