@@ -13,7 +13,7 @@
 
     <!--
     Dev:    Kalin Bowden
-    Date:   
+    Date:   10.18.2017
      -->
 
     <!-- Bootstrap -->
@@ -31,6 +31,8 @@
 
 <body>
     <div class="container-fluid text-center">
+
+        <!-- The title elements -->
         <header id="head">
             <div class="row">
                 <div class="col-lg-7 text-left">
@@ -44,18 +46,13 @@
         </header>
 
         <!-- ============================================================================== -->
-
-        <div class="row" id="charSelect">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-                <button type="button" class="btn btn-default" id="btnPickChar">Pick Char</button>
-            </div>
-            <div class="col-md-4"></div>
-        </div>
-
-        <!-- ============================================================================== -->
+        <!-- The race screen -->
         <div id="race1">
+
+            <!-- The sky -->
             <div class="row text-center" id="race">
+
+                <!-- Char Select -->
                 <div class="col-md-2" class="selectChar"></div>
                 <div class="col-md-8" id="charSel" class="selectChar">
                     <div class="col-md-3" class="selectChar">
@@ -67,24 +64,25 @@
                     </div>
                     <div class="col-md-3" class="selectChar">
                         <span class="glyphicon glyphicon-menu-right" aria-hidden="true" id="charArrowRight" onclick="navRight()"></span>
-                    </div>
-                    
+                    </div>  
                 </div>
                 <div class="col-md-2" class="selectChar"></div>
                 
+                <!-- The racers -->
                 <div class="col-md-5">
                     <img src="" alt="" id="racer0" height="200" width="200">
                     <img src="" alt="" id="racer1" height="200" width="200">
                 </div>
                 <div class="col-md-2">
-
+                    <!-- The light -->
                     <img src="images/photoFinish1.png" alt="" id="go" onclick="toggleRace()">
-
                 </div>
                 <div class="col-md-5"></div>
             </div>
             
         </div>
+
+        <!-- The ground -->
         <div class="row text-center" id="race2">
             <img src="images/check.png" alt="thing" id="finish">
             <div class="col-md-2"></div>
@@ -94,6 +92,7 @@
             <div class="col-md-2"><img src="" alt="random" id="rand" height="300" width="300"></div>   
         </div>
 <!-- ============================================================================== -->
+<!-- The ending screen -->
         <div>
             <div class="row" id="endingScreen">
                 <div class="col-md-4"></div>
@@ -103,9 +102,7 @@
                 </div>
                 <div class="col-md-4"></div>
             </div>
-        </div> 
-
-        
+        </div>         
     </div>
 
     

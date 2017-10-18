@@ -68,31 +68,6 @@ Date:
     }
 
 
-    #light0
-    {
-        border:  .2em solid black;
-        border-radius: 150px;
-        background-color: greenyellow;
-        height: 300px;
-        width:300px;
-        margin: 3em;
-        margin-left: 10%;
-        background: radial-gradient(red, darkred);
-    }
-
-    #light2
-    {
-        border:  .2em solid black;
-        border-radius: 150px;
-        background-color: greenyellow;
-        height: 300px;
-        width:300px;
-        margin: 3em;
-        background: radial-gradient(greenyellow,darkgreen,darkgreen);
-        
-    }
-
-
     #charSelect
     {
         background-color: dimgray;
@@ -186,11 +161,6 @@ Date:
         background-color: rgba(105,105,105, 0.7);
         margin-top: 3.5em;
         z-index: 2;
-    }
-
-    .selectChar
-    {
-        
     }
 
     #char0

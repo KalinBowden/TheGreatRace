@@ -1,6 +1,6 @@
 /*
 Dev     Kalin Bowden
-Date:   
+Date:   10.18.2017
 */
 
 // Class level variables
@@ -14,9 +14,6 @@ var isPegasus = [true, true, true, false, false, false, true];
 
 // Counters
 var counts = [0, 20, 0, 0, 0, 0, 0, 0, 0, 0];
-var count6 = 0;
-var count7 = 0;
-var count8 = 0;
 
 // Booleans
 var endSquence = false;
@@ -43,8 +40,6 @@ var background1;
 var gameOverScreen;
 var winningImg;
 var winningName;
-
-// TODO
 var temp = 1;
 var temp1 = 0;
 
@@ -54,7 +49,7 @@ var temp1 = 0;
 function onLoadMain() 
 {
     // Set Interval
-    var myInt = setInterval(animateHeader, 5);
+    var myInt = setInterval(animate, 5);
     var rand = document.getElementById("rand");
     racer0 = document.getElementById("racer0");
     racer1 = document.getElementById("racer1");
@@ -69,7 +64,6 @@ function onLoadMain()
     go.src = 'images/photoFinish1.png';
     // Add listners to page
     document.getElementById("btnSignIn").addEventListener("click", gotoSignIn, false);
-    document.getElementById("btnPickChar").addEventListener("click", gotoRace, false);
 
     // Set a random background race
     rand.src = randomImages[Math.floor(Math.random() * 6)];
@@ -77,7 +71,7 @@ function onLoadMain()
 
 
 // Run this function every 5 miliseconds
-function animateHeader() 
+function animate() 
 {
     // Grab the all elemets that will be used by this function
     var header = document.getElementById("head");
@@ -88,7 +82,7 @@ function animateHeader()
 
 
     //onGameEnd();
-    animateHeader0(header);
+    animateHeader(header);
     racePonies();
     
 
@@ -114,7 +108,7 @@ function animateHeader()
     rightArrow.style.color = 'rgb(' + counts[6] + ',' + counts[7] + ',' + counts[8] + ')';
 
 
-    // determin winner
+    // Determin winner
     if ((raceCompelted0 > 1435 || raceCompelted1 > 1435) && !raceOver) 
     {
         raceOver = !raceOver;
@@ -155,7 +149,7 @@ function animateHeader()
 
 
 
-// Go to the race TODO
+// Go to the race
 function gotoSignIn() 
 {
     var header = document.getElementById("head");
@@ -167,17 +161,6 @@ function gotoSignIn()
     background1.style.display = "block";
 }
 
-
-
-// TODO
-function gotoChar() 
-{
-    var charSelect = document.getElementById("charSelect");
-    var signIn = document.getElementById("signInForm");
-
-    charSelect.style.display = "block";
-    signIn.style.display = "none";
-}
 
 
 
@@ -313,7 +296,7 @@ function onGameEnd()
 
 
 // Contains and controls the header logic
-function animateHeader0(header)
+function animateHeader(header)
 {
     // Spin the bacgorund
     if (counts[0] < 360) 
@@ -435,7 +418,7 @@ function onGameReset()
     temp = 1;
     temp1 = 0;
 
-    //
+    // Reset winning img
     winningImg.src = '';
 }
 
